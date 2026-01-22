@@ -15,6 +15,9 @@ import homeEarphoneImg from "../../../assets/home/desktop/image-earphones-yx1.jp
 import imgHeroTablet from "../../../assets/home/tablet/image-header.jpg";
 import zx9SpeakerImgTablet from "../../../assets/home/tablet/image-speaker-zx9.png";
 import zx7SpeakerImgTablet from "../../../assets/home/tablet/image-speaker-zx7.jpg";
+import zx9SpeakerImgMobile from "../../../assets/home/mobile/image-speaker-zx9.png";
+import zx7SpeakerImgMobile from "../../../assets/home/mobile/image-speaker-zx7.jpg";
+import yx1EarphonesImgMobile from "../../../assets/home/mobile/image-earphones-yx1.jpg";
 
 export default function Home() {
   const bannerItems = [
@@ -39,28 +42,42 @@ export default function Home() {
   ];
 
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
+  const isMobileOrBelow = useMediaQuery({ maxWidth: 715 });
 
   return (
     <>
-      <div className="homepage-container">
-        <Header />
-        <FeaturedProducts
-          title="XX99 Mark II Headphones"
-          description="Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast."
-          imgClassName="featured-img-container-main"
-          img={imageHero}
-          imgSrcset={`${imgHeroTablet} 1025w`}
-          imgSizes="(max-width: 1025px) 1025w"
-          link="http://localhost:5173/markIIheadphones"
-        />
+      <Header />
+      <div className="hero-container">
+        <img className="hero-img" src={imageHero} />
+        <div className="featured-products-container-hero">
+          <div className="featured-text-container-hero">
+            <p className="product-text">New Product</p>
+            <h1 className="hero-heading">XX99 Mark II Headphones</h1>
+            <p className="featured-text-hero">
+              Experience natural, lifelike audio and exceptional build quality
+              made for the passionate music enthusiast.
+            </p>
+
+            <Link to="http://localhost:5173/markIIheadphones">
+              <button className="featured-products-btn">See Product</button>
+            </Link>
+          </div>
+        </div>
       </div>
+
       <div className="main-content-wrapper">
         <ItemsBanner items={bannerItems} />
         <div className="home-speaker-info">
           <img className="pattern-img" src={patternBackground} />
           <div className="home-speaker-img">
             <img
-              src={isTabletOrBelow ? zx9SpeakerImgTablet : speakerImg}
+              src={
+                isMobileOrBelow
+                  ? zx9SpeakerImgMobile
+                  : isTabletOrBelow
+                    ? zx9SpeakerImgTablet
+                    : speakerImg
+              }
               alt="zx9 speaker"
             />
           </div>
@@ -83,12 +100,22 @@ export default function Home() {
             </Link>
           </div>
           <div className="zx7-image-container">
-            <img src={isTabletOrBelow ? zx7SpeakerImgTablet : zx7SpeakerImg} />
+            <img
+              src={
+                isMobileOrBelow
+                  ? zx7SpeakerImgMobile
+                  : isTabletOrBelow
+                    ? zx7SpeakerImgTablet
+                    : zx7SpeakerImg
+              }
+            />
           </div>
         </div>
         <div className="earphone-info-container">
           <div>
-            <img src={homeEarphoneImg} />
+            <img
+              src={isMobileOrBelow ? yx1EarphonesImgMobile : homeEarphoneImg}
+            />
           </div>
           <div className="earphones-info">
             <h2>YX1 Earphones</h2>

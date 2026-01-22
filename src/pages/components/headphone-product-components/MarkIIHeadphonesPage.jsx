@@ -51,13 +51,17 @@ export default function MarkIIHeadphonesPage() {
     <>
       <Header />
 
-      <a
-        className="return-link"
-        href="http://localhost:5173/headphoneproductpage"
+      <div
+        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
-        Go Back
-      </a>
-      <div className="main-content-wrapper-tablet">
+        <div>
+          <a
+            className="return-link"
+            href="http://localhost:5173/headphoneproductpage"
+          >
+            Go Back
+          </a>
+        </div>
         <FeaturedProducts
           className={`featured-products-container-white ${isTabletOrBelow ? "featured-products-container-white--mobile" : ""}`}
           title="XX99 Mark II Headphones"

@@ -51,7 +51,18 @@ export default function YX1EarphonesPage() {
   return (
     <>
       <Header />
-      <div className="main-content-wrapper-tablet">
+
+      <div
+        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+      >
+        <div>
+          <a
+            className="return-link"
+            href="http://localhost:5173/earphonesproductpage"
+          >
+            Go Back
+          </a>
+        </div>
         <FeaturedProducts
           className={`featured-products-container-white ${isTabletOrBelow ? "featured-products-container-white--mobile" : ""}`}
           title="YX1 Wireless Earphones"
