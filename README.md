@@ -1,4 +1,4 @@
-This is an audio e-commerce website built using React. It's an on-going project, and the first project I've built using React, which I thoroughly enjoyed.
+This is an audio e-commerce website built using React, with design taken from Figma. It's an on-going project, and the first project I've built using React, which I thoroughly enjoyed.
 
 Functionality to come is -
 
