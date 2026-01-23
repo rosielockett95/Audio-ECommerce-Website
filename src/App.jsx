@@ -6,7 +6,7 @@ import SpeakerProductPage from "./pages/components/speaker-product-components/Sp
 import EarphonesProductPage from "./pages/components/earphone-product-components/EarphonesProductPage";
 import MarkIIHeadphonesPage from "./pages/components/headphone-product-components/MarkIIHeadphonesPage";
 import MarkIHeadphonesPage from "./pages/components/headphone-product-components/MarkIHeadphonesPage";
-import XX59HeadphonesPage from "./pages/components/headphone-product-components/Xx59HeadphonesPage";
+import XX59HeadphonesPage from "./pages/components/headphone-product-components/XX59HeadphonesPage";
 import ZX9SpeakerPage from "./pages/components/speaker-product-components/ZX9SpeakerPage";
 import ZX7SpeakerPage from "./pages/components/speaker-product-components/ZX7SpeakerPage";
 import YX1EarphonesPage from "./pages/components/earphone-product-components/YX1EarphonesPage";

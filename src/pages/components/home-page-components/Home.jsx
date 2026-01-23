@@ -48,7 +48,10 @@ export default function Home() {
     <>
       <Header />
       <div className="hero-container">
-        <img className="hero-img" src={imageHero} />
+        <img
+          className="hero-img"
+          src={isTabletOrBelow ? imgHeroTablet : imageHero}
+        />
         <div className="featured-products-container-hero">
           <div className="featured-text-container-hero">
             <p className="product-text">New Product</p>
