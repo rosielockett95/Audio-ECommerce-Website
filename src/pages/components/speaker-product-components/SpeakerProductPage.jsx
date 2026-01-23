@@ -15,19 +15,19 @@ export default function SpeakerProductPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
   return (
@@ -42,14 +42,14 @@ export default function SpeakerProductPage() {
           title="ZX9 Speaker"
           description="Upgrade your sound system with the all new ZX9 active speaker. It's a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups."
           img={zx9SpeakerPrevImg}
-          link="http://localhost:5173/ZX9speaker"
+          link="/ZX9speaker"
         />
         <FeaturedProducts
           className="featured-products-container-white-reverse "
           title="ZX7 Speaker"
           description="Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use."
           img={zx7SpeakerPrevImg}
-          link="http://localhost:5173/ZX7speaker"
+          link="/ZX7speaker"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />

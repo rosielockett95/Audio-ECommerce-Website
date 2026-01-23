@@ -32,19 +32,19 @@ export default function ZX7SpeakerPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
 
@@ -55,10 +55,7 @@ export default function ZX7SpeakerPage() {
         className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
-          <a
-            className="return-link"
-            href="http://localhost:5173/speakerproductpage"
-          >
+          <a className="return-link" href="/speakerproductpage">
             Go Back
           </a>
         </div>
@@ -100,13 +97,13 @@ export default function ZX7SpeakerPage() {
         <FurtherItems
           itemOneImg={zx9SpeakerImg}
           itemOneName="ZX9 Speaker"
-          linkOne="http://localhost:5173/ZX9speaker"
+          linkOne="/ZX9speaker"
           itemTwoImg={markIHeadphoneImg}
           itemTwoName="XX99 Mark I"
-          linkTwo="http://localhost:5173/markIheadphones"
+          linkTwo="/markIheadphones"
           itemThreeImg={xx59PreviewImg}
           itemThreeName="XX59"
-          linkThree="http://localhost:5173/XX59headphones"
+          linkThree="XX59headphones"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />
