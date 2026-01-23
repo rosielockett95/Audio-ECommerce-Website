@@ -17,19 +17,19 @@ export default function HeadphoneProductPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
   return (
@@ -44,21 +44,21 @@ export default function HeadphoneProductPage() {
           title="XX99 Mark II Headphones"
           description="The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound."
           img={headphoneImg}
-          link="http://localhost:5173/markIIheadphones"
+          link="/markIIheadphones"
         />
         <FeaturedProducts
           className="featured-products-container-white-reverse "
           title="XX99 Mark I Headphones"
           description="As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go."
           img={headphoneMarkOne}
-          link="http://localhost:5173/markIheadphones"
+          link="/markIheadphones"
         />
         <FeaturedProducts
           className="featured-products-container-white "
           title="XX59 Headphones"
           description="Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move."
           img={headphoneXX59}
-          link="http://localhost:5173/XX59headphones"
+          link="/XX59headphones"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />

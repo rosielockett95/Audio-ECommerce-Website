@@ -25,19 +25,19 @@ export default function Home() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
 

@@ -32,19 +32,19 @@ export default function MarkIIHeadphonesPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
   return (
@@ -55,10 +55,7 @@ export default function MarkIIHeadphonesPage() {
         className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
-          <a
-            className="return-link"
-            href="http://localhost:5173/headphoneproductpage"
-          >
+          <a className="return-link" href="/headphoneproductpage">
             Go Back
           </a>
         </div>
@@ -100,13 +97,13 @@ The advanced Active Noise Cancellation with built-in equalizer allow you to expe
         <FurtherItems
           itemOneImg={markOnePreviewImg}
           itemOneName="XX99 Mark I"
-          linkOne="http://localhost:5173/markIheadphones"
+          linkOne="/markIheadphones"
           itemTwoImg={xx59PreviewImg}
           itemTwoName="XX59"
-          linkTwo="http://localhost:5173/XX59headphones"
+          linkTwo="/XX59headphones"
           itemThreeImg={zx9PreviewImg}
           itemThreeName="ZX9 Speaker"
-          linkThree="http://localhost:5173/ZX9speaker"
+          linkThree="/ZX9speaker"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />

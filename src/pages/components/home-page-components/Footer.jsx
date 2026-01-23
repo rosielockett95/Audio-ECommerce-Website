@@ -48,10 +48,10 @@ export default function Footer() {
       </div>
       <div className="right-side-footer">
         <div className="footer-nav">
-          <a href="http://localhost:5173/">Home</a>
-          <a href="http://localhost:5173/headphoneproductpage">Headphones</a>
-          <a href="http://localhost:5173/speakerproductpage">Speakers</a>
-          <a href="http://localhost:5173/earphonesproductpage">Earphones</a>
+          <a href="/">Home</a>
+          <a href="/headphoneproductpage">Headphones</a>
+          <a href="/speakerproductpage">Speakers</a>
+          <a href="/earphonesproductpage">Earphones</a>
         </div>
         <div className="footer-logos">
           <img src={facebookLogo} />

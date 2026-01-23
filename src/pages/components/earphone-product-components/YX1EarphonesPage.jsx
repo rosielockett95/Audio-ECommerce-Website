@@ -32,19 +32,19 @@ export default function YX1EarphonesPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
 
@@ -56,10 +56,7 @@ export default function YX1EarphonesPage() {
         className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
-          <a
-            className="return-link"
-            href="http://localhost:5173/earphonesproductpage"
-          >
+          <a className="return-link" href="/earphonesproductpage">
             Go Back
           </a>
         </div>
@@ -101,13 +98,13 @@ export default function YX1EarphonesPage() {
         <FurtherItems
           itemOneImg={markIHeadphoneImg}
           itemOneName="XX99 Mark I"
-          linkOne="http://localhost:5173/markIheadphones"
+          linkOne="/markIheadphones"
           itemTwoImg={xx59PreviewImg}
           itemTwoName="XX59"
-          linkTwo="http://localhost:5173/XX59headphones"
+          linkTwo="/XX59headphones"
           itemThreeImg={zx9SpeakerImg}
           itemThreeName="ZX9 Speaker"
-          linkThree="http://localhost:5173/ZX9speaker"
+          linkThree="/ZX9speaker"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />

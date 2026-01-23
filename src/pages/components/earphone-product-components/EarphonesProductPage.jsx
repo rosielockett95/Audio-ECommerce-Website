@@ -14,19 +14,19 @@ export default function EarphonesProductPage() {
       img: headphonesImg,
       alt: "Headphones",
       name: "Headphones",
-      link: "http://localhost:5173/headphoneproductpage",
+      link: "/headphoneproductpage",
     },
     {
       img: speakerImg,
       alt: "Speakers",
       name: "Speakers",
-      link: "http://localhost:5173/speakerproductpage",
+      link: "/speakerproductpage",
     },
     {
       img: earphonesImg,
       alt: "Earphones",
       name: "Earphones",
-      link: "http://localhost:5173/earphonesproductpage",
+      link: "/earphonesproductpage",
     },
   ];
 
@@ -42,7 +42,7 @@ export default function EarphonesProductPage() {
           title="YX1 Earphones"
           description="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
           img={yx1EarphonesPrevImg}
-          link="http://localhost:5173/YX1earphones"
+          link="/YX1earphones"
         />
         <ItemsBanner items={bannerItems} />
         <AudioGearInfo />
