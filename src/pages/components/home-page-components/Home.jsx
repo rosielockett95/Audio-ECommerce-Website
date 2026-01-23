@@ -13,6 +13,7 @@ import patternBackground from "../../../assets/home/desktop/pattern-circles.svg"
 import zx7SpeakerImg from "../../../assets/home/desktop/image-speaker-zx7.jpg";
 import homeEarphoneImg from "../../../assets/home/desktop/image-earphones-yx1.jpg";
 import imgHeroTablet from "../../../assets/home/tablet/image-header.jpg";
+import imgHeroMobile from "../../../assets/home/mobile/image-header.jpg";
 import zx9SpeakerImgTablet from "../../../assets/home/tablet/image-speaker-zx9.png";
 import zx7SpeakerImgTablet from "../../../assets/home/tablet/image-speaker-zx7.jpg";
 import zx9SpeakerImgMobile from "../../../assets/home/mobile/image-speaker-zx9.png";
@@ -41,7 +42,7 @@ export default function Home() {
     },
   ];
 
-  const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
+  const isTabletOrBelow = useMediaQuery({ maxWidth: 1160 });
   const isMobileOrBelow = useMediaQuery({ maxWidth: 715 });
 
   return (
@@ -50,7 +51,13 @@ export default function Home() {
       <div className="hero-container">
         <img
           className="hero-img"
-          src={isTabletOrBelow ? imgHeroTablet : imageHero}
+          src={
+            isMobileOrBelow
+              ? imgHeroMobile
+              : isTabletOrBelow
+                ? imgHeroTablet
+                : imageHero
+          }
         />
         <div className="featured-products-container-hero">
           <div className="featured-text-container-hero">

@@ -772,7 +772,7 @@ header img:hover {
   text-transform: uppercase;
 }
 
-@media (max-width: 1205px) {
+@media (max-width: 1160px) {
   .main-content-wrapper-tablet {
     max-width: 1100px;
     margin: 0 auto;
@@ -795,6 +795,28 @@ header img:hover {
 
   .featured-products-container {
     position: relative;
+  }
+
+  .featured-products-container-hero {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .featured-text-container-hero {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-heading {
+    font-size: 44px;
+    text-align: center;
+  }
+
+  .featured-text-hero {
+    font-size: 15px;
+    margin-bottom: 28px;
+    text-align: center;
   }
 
   .featured-text-container {
@@ -987,6 +1009,10 @@ header img:hover {
     padding: 1rem;
   }
 
+  .featured-text-container-hero {
+    margin-bottom: 40px;
+  }
+
   .hamburger-nav {
     top: 66px;
     left: -55px;
@@ -1055,6 +1081,14 @@ header img:hover {
 @media (max-width: 585px) {
   .earphone-info-container {
     margin-top: 12rem;
+  }
+
+  .hero-heading {
+    font-size: 36px;
+  }
+
+  .featured-text-hero {
+    margin-top: 0px;
   }
 
   .product-hero h1 {
