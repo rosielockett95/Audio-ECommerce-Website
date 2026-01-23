@@ -61,7 +61,7 @@ export default function Home() {
               made for the passionate music enthusiast.
             </p>
 
-            <Link to="http://localhost:5173/markIIheadphones">
+            <Link to="/markIIheadphones">
               <button className="featured-products-btn">See Product</button>
             </Link>
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
               Upgrade to premium speakers that are phonemenally built to
               delivery truly remarkable sound
             </p>
-            <Link to="http://localhost:5173/ZX9speaker">
+            <Link to="/ZX9speaker">
               <button className="home-speaker-button">See Product</button>
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="zx7-speaker-info">
           <div className="zx7-speaker-text">
             <h2>ZX7 Speaker</h2>
-            <Link to="http://localhost:5173/ZX7speaker">
+            <Link to="/ZX7speaker">
               <button>See Product</button>
             </Link>
           </div>
@@ -124,7 +124,7 @@ export default function Home() {
             <h2>YX1 Earphones</h2>
 
             <div>
-              <Link to="http://localhost:5173/YX1earphones">
+              <Link to="/YX1earphones">
                 <button>See Product</button>
               </Link>
             </div>

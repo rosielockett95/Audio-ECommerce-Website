@@ -16,21 +16,21 @@ export default function Header() {
         <img onClick={() => setOpen(!open)} src={hamburgerMenu} />
       </div>
       <div className={open ? "hamburger-nav" : "none"}>
-        <a href="http://localhost:5173/">Home</a>
-        <a href="http://localhost:5173/headphoneproductpage">Headphones</a>
-        <a href="http://localhost:5173/speakerproductpage">Speakers</a>
-        <a href="http://localhost:5173/earphonesproductpage">Earphones</a>
+        <a href="/">Home</a>
+        <a href="/headphoneproductpage">Headphones</a>
+        <a href="/speakerproductpage">Speakers</a>
+        <a href="/earphonesproductpage">Earphones</a>
       </div>
 
-      <Link to="http://localhost:5173">
+      <Link to="/">
         <img src={logo} alt="logo" />
       </Link>
 
       <div className="header-nav">
-        <a href="http://localhost:5173/">Home</a>
-        <a href="http://localhost:5173/headphoneproductpage">Headphones</a>
-        <a href="http://localhost:5173/speakerproductpage">Speakers</a>
-        <a href="http://localhost:5173/earphonesproductpage">Earphones</a>
+        <a href="/">Home</a>
+        <a href="/headphoneproductpage">Headphones</a>
+        <a href="/speakerproductpage">Speakers</a>
+        <a href="/earphonesproductpage">Earphones</a>
       </div>
       <img src={cart} alt="cart icon" />
     </header>
