@@ -97,7 +97,7 @@ export default function ZX9SpeakerPage() {
         <FurtherItems
           itemOneImg={zx7SpeakerImg}
           itemOneName="ZX7 Speaker"
-          linkOne="ZX7speaker"
+          linkOne="/ZX7speaker"
           itemTwoImg={markIHeadphoneImg}
           itemTwoName="XX99 Mark I"
           linkTwo="/markIheadphones"
