@@ -10,7 +10,7 @@ export function CartProvider({ children }) {
   useEffect(() => {
     async function loadCart() {
       try {
-        const res = await fetch("http://localhost:5001/cart");
+        const res = await fetch("/cart");
         const data = await res.json();
 
         // Always ensure cartItems is an array with valid objects
@@ -60,7 +60,7 @@ export function CartProvider({ children }) {
 
     // Send to backend
     try {
-      const res = await fetch("http://localhost:5001/cart", {
+      const res = await fetch("/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(itemToAdd),
@@ -111,7 +111,7 @@ export function CartProvider({ children }) {
   function clearCart() {
     setCartItems([]);
     // call DELETE on backend
-    fetch("http://localhost:5001/cart", { method: "DELETE" }).catch((err) =>
+    fetch("/cart", { method: "DELETE" }).catch((err) =>
       console.error("Failed to clear cart:", err),
     );
   }
