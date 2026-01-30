@@ -4,10 +4,13 @@ import { useState } from "react";
 import logo from "../../../assets/shared/desktop/logo.svg";
 import cart from "../../../assets/shared/desktop/icon-cart.svg";
 import hamburgerMenu from "../../../assets/shared/tablet/icon-hamburger.svg";
+import ShoppingCart from "../ShoppingCart";
+import { useCart } from "../CartContext";
 
-export default function Header() {
+export default function Header({}) {
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
 
+  const { isOpen, setCartOpen } = useCart();
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,7 +35,8 @@ export default function Header() {
         <a href="/speakerproductpage">Speakers</a>
         <a href="/earphonesproductpage">Earphones</a>
       </div>
-      <img src={cart} alt="cart icon" />
+      <img onClick={() => setCartOpen(!isOpen)} src={cart} alt="cart icon" />
+      <ShoppingCart isOpen={isOpen} />
     </header>
   );
 }

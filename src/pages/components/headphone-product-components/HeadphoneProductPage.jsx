@@ -1,8 +1,7 @@
 import headphoneImg from "../../../assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg";
 import headphoneMarkOne from "../../../assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg";
 import headphoneXX59 from "../../../assets/product-xx59-headphones/desktop/image-category-page-preview.jpg";
-
-import Header from "../../components/home-page-components/Header";
+import { useCart } from "../CartContext";
 import FeaturedProducts from "../../components/home-page-components/FeaturedProduct";
 import ItemsBanner from "../../components/home-page-components/ItemsBanner";
 import AudioGearInfo from "../../components/home-page-components/AudioGearInfo";
@@ -12,6 +11,8 @@ import speakerImg from "../../../assets/shared/desktop/image-category-thumbnail-
 import earphonesImg from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
 
 export default function HeadphoneProductPage() {
+  const { isOpen } = useCart();
+
   const bannerItems = [
     {
       img: headphonesImg,
@@ -34,11 +35,14 @@ export default function HeadphoneProductPage() {
   ];
   return (
     <>
-      <Header />
-      <div className="product-hero">
+      <div className={isOpen ? "product-hero opacity" : "product-hero"}>
         <h1>Headphones</h1>
       </div>
-      <div className="main-content-wrapper">
+      <div
+        className={
+          isOpen ? "main-content-wrapper opacity" : "main-content-wrapper"
+        }
+      >
         <FeaturedProducts
           className="featured-products-container-white "
           title="XX99 Mark II Headphones"

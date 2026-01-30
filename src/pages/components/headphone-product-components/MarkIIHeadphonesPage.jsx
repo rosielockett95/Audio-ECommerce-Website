@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useCart } from "../CartContext";
 import Header from "../home-page-components/Header";
 import FeaturedProducts from "../home-page-components/FeaturedProduct";
 import Features from "./Features";
@@ -23,9 +24,27 @@ import productImgOneTablet from "../../../assets/product-xx99-mark-two-headphone
 import productImgTwoTablet from "../../../assets/product-xx99-mark-two-headphones/tablet/image-gallery-2.jpg";
 import productImgThreeTablet from "../../../assets/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg";
 
+const PRODUCT = {
+  id: "xx99-mark-I-headphones",
+  name: "XX99 Mark I Headphones",
+  cost: 1750,
+  photo: headphoneImg,
+};
+
 export default function MarkIIHeadphonesPage() {
+  const { cartItems, addToCart, clearCart, isOpen } = useCart();
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const [quantity, newQuantity] = useState(0);
+
+  const cost = 1750;
+
+  function increaseQuantity() {
+    newQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    newQuantity(quantity - 1);
+  }
 
   const bannerItems = [
     {
@@ -49,10 +68,8 @@ export default function MarkIIHeadphonesPage() {
   ];
   return (
     <>
-      <Header />
-
       <div
-        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+        className={`${isOpen ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
           <a className="return-link" href="/headphoneproductpage">
@@ -64,14 +81,27 @@ export default function MarkIIHeadphonesPage() {
           title="XX99 Mark II Headphones"
           description="The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound."
           img={isTabletOrBelow ? markIIheadphonesImgTablet : headphoneImg}
-          cost="2,999"
+          cost={cost}
         >
           <div className="cart-button-container">
             <button className="quantity-button">
-              <button>+</button>
-              <p>{quantity}</p> <button>-</button>
+              <button onClick={quantity > 0 ? decreaseQuantity : null}>
+                -
+              </button>
+
+              <p>{quantity}</p>
+              <button onClick={increaseQuantity}>+</button>
             </button>
-            <button className="featured-products-btn"> Add To Cart </button>
+            <button
+              onClick={() => {
+                if (quantity > 0) {
+                  addToCart({ ...PRODUCT, quantity });
+                }
+              }}
+              className="featured-products-btn"
+            >
+              Add To Cart
+            </button>
           </div>
         </FeaturedProducts>
         <Features

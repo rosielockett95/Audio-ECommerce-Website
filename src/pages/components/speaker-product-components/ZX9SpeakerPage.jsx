@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
-import Header from "../home-page-components/Header";
+import { useCart } from "../CartContext";
 import FeaturedProducts from "../home-page-components/FeaturedProduct";
 import Features from "../headphone-product-components/Features";
 import ProductsPhotoGrid from "../headphone-product-components/ProductsPhotoGrid";
@@ -23,9 +23,27 @@ import productImgOneTablet from "../../../assets/product-zx9-speaker/tablet/imag
 import productImgTwoTablet from "../../../assets/product-zx9-speaker/tablet/image-gallery-2.jpg";
 import productImgThreeTablet from "../../../assets/product-zx9-speaker/tablet/image-gallery-3.jpg";
 
+const PRODUCT = {
+  id: "zx9-speaker",
+  name: "ZX9 Speaker",
+  cost: 4500,
+  photo: zx9SpeakerImg,
+};
+
 export default function ZX9SpeakerPage() {
+  const { cartItems, addToCart, isOpen } = useCart();
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const [quantity, newQuantity] = useState(0);
+
+  const cost = 4500;
+
+  function increaseQuantity() {
+    newQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    newQuantity(quantity - 1);
+  }
 
   const bannerItems = [
     {
@@ -50,9 +68,8 @@ export default function ZX9SpeakerPage() {
 
   return (
     <>
-      <Header />
       <div
-        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+        className={`${isOpen ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
           <a className="return-link" href="/speakerproductpage">
@@ -64,14 +81,27 @@ export default function ZX9SpeakerPage() {
           title="ZX9 Speaker"
           description="Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups."
           img={isTabletOrBelow ? zx9SpeakerImgTablet : zx9SpeakerImg}
-          cost="4,500"
+          cost={cost}
         >
           <div className="cart-button-container">
             <button className="quantity-button">
-              <button>+</button>
-              <p>{quantity}</p> <button>-</button>
+              <button onClick={quantity > 0 ? decreaseQuantity : null}>
+                -
+              </button>
+
+              <p>{quantity}</p>
+              <button onClick={increaseQuantity}>+</button>
             </button>
-            <button className="featured-products-btn"> Add To Cart </button>
+            <button
+              onClick={() => {
+                if (quantity > 0) {
+                  addToCart({ ...PRODUCT, quantity });
+                }
+              }}
+              className="featured-products-btn"
+            >
+              Add To Cart
+            </button>
           </div>
         </FeaturedProducts>
         <Features

@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
-import Header from "../home-page-components/Header";
+import { useCart } from "../CartContext";
 import FeaturedProducts from "../home-page-components/FeaturedProduct";
 import Features from "../headphone-product-components/Features";
 import ProductsPhotoGrid from "../headphone-product-components/ProductsPhotoGrid";
@@ -23,9 +23,27 @@ import productImgOneTablet from "../../../assets/product-yx1-earphones/tablet/im
 import productImgTwoTablet from "../../../assets/product-yx1-earphones/tablet/image-gallery-2.jpg";
 import productImgThreeTablet from "../../../assets/product-yx1-earphones/tablet/image-gallery-3.jpg";
 
-export default function YX1EarphonesPage() {
+const PRODUCT = {
+  id: "yx1-earphones",
+  name: "YX1 Wireless Earphones",
+  cost: 599,
+  photo: yx1EarphonesImg,
+};
+
+export default function YX1EarphonesPage({}) {
+  const { cartItems, addToCart, isOpen } = useCart();
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const [quantity, newQuantity] = useState(0);
+
+  const cost = 599;
+
+  function increaseQuantity() {
+    newQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    newQuantity(quantity - 1);
+  }
 
   const bannerItems = [
     {
@@ -50,10 +68,8 @@ export default function YX1EarphonesPage() {
 
   return (
     <>
-      <Header />
-
       <div
-        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+        className={`${isOpen ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
           <a className="return-link" href="/earphonesproductpage">
@@ -65,16 +81,30 @@ export default function YX1EarphonesPage() {
           title="YX1 Wireless Earphones"
           description="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
           img={isTabletOrBelow ? yx1EarphonesImgTablet : yx1EarphonesImg}
-          cost="599"
+          cost={cost}
         >
           <div className="cart-button-container">
             <button className="quantity-button">
-              <button>+</button>
-              <p>{quantity}</p> <button>-</button>
+              <button onClick={quantity > 0 ? decreaseQuantity : null}>
+                -
+              </button>
+
+              <p>{quantity}</p>
+              <button onClick={increaseQuantity}>+</button>
             </button>
-            <button className="featured-products-btn"> Add To Cart </button>
+            <button
+              onClick={() => {
+                if (quantity > 0) {
+                  addToCart({ ...PRODUCT, quantity });
+                }
+              }}
+              className="featured-products-btn"
+            >
+              Add To Cart
+            </button>
           </div>
         </FeaturedProducts>
+
         <Features
           description="Experience unrivalled stereo sound thanks to innovative acoustic technology. With improved ergonomics designed for full day wearing, these revolutionary earphones have been finely crafted to provide you with the perfect fit, delivering complete comfort all day long while enjoying exceptional noise isolation and truly immersive sound.
 

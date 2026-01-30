@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import Header from "./Header.jsx";
 import FeaturedProducts from "./FeaturedProduct.jsx";
@@ -19,8 +20,10 @@ import zx7SpeakerImgTablet from "../../../assets/home/tablet/image-speaker-zx7.j
 import zx9SpeakerImgMobile from "../../../assets/home/mobile/image-speaker-zx9.png";
 import zx7SpeakerImgMobile from "../../../assets/home/mobile/image-speaker-zx7.jpg";
 import yx1EarphonesImgMobile from "../../../assets/home/mobile/image-earphones-yx1.jpg";
+import { useCart } from "../CartContext.jsx";
 
-export default function Home() {
+export default function Home({}) {
+  const { isOpen, setCartOpen } = useCart();
   const bannerItems = [
     {
       img: headphonesImg,
@@ -47,8 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <div className="hero-container">
+      <div className={isOpen ? "hero-container opacity" : "hero-container"}>
         <img
           className="hero-img"
           src={
@@ -75,7 +77,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="main-content-wrapper">
+      <div
+        className={
+          isOpen ? "main-content-wrapper opacity" : "main-content-wrapper"
+        }
+      >
         <ItemsBanner items={bannerItems} />
         <div className="home-speaker-info">
           <img className="pattern-img" src={patternBackground} />

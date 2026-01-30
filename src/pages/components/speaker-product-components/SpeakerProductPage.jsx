@@ -8,8 +8,11 @@ import zx7SpeakerPrevImg from "../../../assets/product-zx7-speaker/desktop/image
 import headphonesImg from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
 import speakerImg from "../../../assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphonesImg from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
+import { useCart } from "../CartContext";
 
 export default function SpeakerProductPage() {
+  const { isOpen } = useCart();
+
   const bannerItems = [
     {
       img: headphonesImg,
@@ -32,11 +35,14 @@ export default function SpeakerProductPage() {
   ];
   return (
     <>
-      <Header />
-      <div className="product-hero">
+      <div className={isOpen ? "product-hero opacity" : "product-hero"}>
         <h1>Speakers</h1>
       </div>
-      <div className="main-content-wrapper">
+      <div
+        className={
+          isOpen ? "main-content-wrapper opacity" : "main-content-wrapper"
+        }
+      >
         <FeaturedProducts
           className="featured-products-container-white "
           title="ZX9 Speaker"

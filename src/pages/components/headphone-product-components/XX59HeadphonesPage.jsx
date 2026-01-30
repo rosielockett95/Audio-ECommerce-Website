@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
-import Header from "../home-page-components/Header";
+import { useCart } from "../CartContext";
 import FeaturedProducts from "../home-page-components/FeaturedProduct";
 import Features from "./Features";
 import ProductsPhotoGrid from "./ProductsPhotoGrid";
@@ -23,9 +23,27 @@ import productImgOneTablet from "../../../assets/product-xx59-headphones/tablet/
 import productImgTwoTablet from "../../../assets/product-xx59-headphones/tablet/image-gallery-2.jpg";
 import productImgThreeTablet from "../../../assets/product-xx59-headphones/tablet/image-gallery-3.jpg";
 
+const PRODUCT = {
+  id: "xx59-headphones",
+  name: "XX59 Headphones",
+  cost: 899,
+  photo: xx59HeadphoneImg,
+};
+
 export default function XX59HeadphonesPage() {
+  const { cartItems, addToCart, isOpen } = useCart();
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const [quantity, newQuantity] = useState(0);
+
+  const cost = 899;
+
+  function increaseQuantity() {
+    newQuantity(quantity + 1);
+  }
+
+  function decreaseQuantity() {
+    newQuantity(quantity - 1);
+  }
 
   const bannerItems = [
     {
@@ -50,10 +68,8 @@ export default function XX59HeadphonesPage() {
 
   return (
     <>
-      <Header />
-
       <div
-        className={`main-content-wrapper-product ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+        className={`${isOpen ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
           <a className="return-link" href="/headphoneproductpage">
@@ -65,14 +81,27 @@ export default function XX59HeadphonesPage() {
           title="XX59 Headphones"
           description="Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move."
           img={isTabletOrBelow ? xx59HeadphoneImgTablet : xx59HeadphoneImg}
-          cost="899"
+          cost={cost}
         >
           <div className="cart-button-container">
             <button className="quantity-button">
-              <button>+</button>
-              <p>{quantity}</p> <button>-</button>
+              <button onClick={quantity > 0 ? decreaseQuantity : null}>
+                -
+              </button>
+
+              <p>{quantity}</p>
+              <button onClick={increaseQuantity}>+</button>
             </button>
-            <button className="featured-products-btn"> Add To Cart </button>
+            <button
+              onClick={() => {
+                if (quantity > 0) {
+                  addToCart({ ...PRODUCT, quantity });
+                }
+              }}
+              className="featured-products-btn"
+            >
+              Add To Cart
+            </button>
           </div>
         </FeaturedProducts>
         <Features
