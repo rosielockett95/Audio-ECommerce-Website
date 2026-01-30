@@ -4,12 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "start": "NODE_ENV=production node backend/server.js",
+  "client": "vite",
+  "server": "nodemon backend/server.js",
+  "dev": "concurrently \"npm run client\" \"npm run server\"",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview"
+}
   "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-responsive": "^10.0.1",
@@ -24,6 +30,20 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "nodemon": "^3.1.11",
     "vite": "^7.2.4"
-  }
+  },
+  "description": "This is an audio e-commerce website built using React, with design taken from Figma. It's an on-going project, and the first project I've built using React, which I thoroughly enjoyed.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosielockett95/Audio-ECommerce-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosielockett95/Audio-ECommerce-Website/issues"
+  },
+  "homepage": "https://github.com/rosielockett95/Audio-ECommerce-Website#readme"
 }
