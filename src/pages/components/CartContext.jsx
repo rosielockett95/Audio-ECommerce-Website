@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const cartContext = createContext();
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isOpen, setCartOpen] = useState(false);
@@ -10,7 +12,7 @@ export function CartProvider({ children }) {
   useEffect(() => {
     async function loadCart() {
       try {
-        const res = await fetch("/cart");
+        const res = await fetch(`${API_URL}/cart`);
         const data = await res.json();
 
         // Always ensure cartItems is an array with valid objects
@@ -60,7 +62,7 @@ export function CartProvider({ children }) {
 
     // Send to backend
     try {
-      const res = await fetch("/cart", {
+      const res = await fetch(`${API_URL}/cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(itemToAdd),
@@ -111,7 +113,7 @@ export function CartProvider({ children }) {
   function clearCart() {
     setCartItems([]);
     // call DELETE on backend
-    fetch("/cart", { method: "DELETE" }).catch((err) =>
+    fetch(`${API_URL}/cart`, { method: "DELETE" }).catch((err) =>
       console.error("Failed to clear cart:", err),
     );
   }
