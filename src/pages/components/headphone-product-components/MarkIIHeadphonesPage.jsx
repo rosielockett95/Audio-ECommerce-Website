@@ -25,8 +25,8 @@ import productImgTwoTablet from "../../../assets/product-xx99-mark-two-headphone
 import productImgThreeTablet from "../../../assets/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg";
 
 const PRODUCT = {
-  id: "xx99-mark-I-headphones",
-  name: "XX99 Mark I Headphones",
+  id: "xx99-mark-II-headphones",
+  name: "XX99 Mark II",
   cost: 1750,
   photo: headphoneImg,
 };

@@ -7,11 +7,17 @@ import hamburgerMenu from "../../../assets/shared/tablet/icon-hamburger.svg";
 import ShoppingCart from "../ShoppingCart";
 import { useCart } from "../CartContext";
 
+// Stop propogation is used to stop event bubbling, but it must be called on the same event or it won't work
+
 export default function Header({}) {
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
 
   const { isOpen, setCartOpen } = useCart();
   const [open, setOpen] = useState(false);
+
+  function openCart() {
+    setCartOpen((prev) => !prev);
+  }
 
   return (
     <header>
@@ -35,8 +41,15 @@ export default function Header({}) {
         <a href="/speakerproductpage">Speakers</a>
         <a href="/earphonesproductpage">Earphones</a>
       </div>
-      <img onClick={() => setCartOpen(!isOpen)} src={cart} alt="cart icon" />
-      <ShoppingCart isOpen={isOpen} />
+      <img
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          openCart();
+        }}
+        src={cart}
+        alt="cart icon"
+      />
+      <ShoppingCart isOpen={isOpen} onClose={() => setCartOpen(false)} />
     </header>
   );
 }

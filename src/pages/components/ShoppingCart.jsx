@@ -1,10 +1,29 @@
 import { useCart } from "./CartContext";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export default function ShoppingCart({ isOpen }) {
+export default function ShoppingCart({ isOpen, onClose }) {
+  const cartRef = useRef(null);
   const { cartItems, clearCart, increaseItemQuantity, decreaseItemQuantity } =
     useCart();
   const amountOfItems = Array.isArray(cartItems) ? cartItems.length : 0;
+
+  // Close cart from clicking outaide the cart
+  (useEffect(() => {
+    function handleClickOutside(e) {
+      if (cartRef.current && !cartRef.current.contains(e.target)) {
+        onClose();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }),
+    [isOpen, onClose]);
 
   //  Loops through each instance of that item in the array and adds the first argument onto it
   const totalCost = cartItems.reduce(
@@ -24,7 +43,7 @@ export default function ShoppingCart({ isOpen }) {
   // );
 
   return (
-    <div className={isOpen ? "shopping-cart-container" : "none"}>
+    <div ref={cartRef} className={isOpen ? "shopping-cart-container" : "none"}>
       <div className="shopping-header">
         <div>
           <h1>Cart ({amountOfItems})</h1>
@@ -43,8 +62,8 @@ export default function ShoppingCart({ isOpen }) {
                 <img src={item.photo || ""} alt={item.name || ""} />
               </div>
               <div className="item-price-container">
-                <p>{item.name || ""}</p>
-                <p>£{item.cost * item.quantity}</p>
+                <p className="item-name">{item.name || ""}</p>
+                <p className="item-cost">£{item.cost * item.quantity}</p>
               </div>
               <div className="quantity-button">
                 <button onClick={() => decreaseItemQuantity(item.id)}>-</button>
@@ -61,6 +80,9 @@ export default function ShoppingCart({ isOpen }) {
           <p className="total-text">Total</p>
         </div>
         <div className="total-cost">{formattedTotal}</div>
+      </div>
+      <div className="checkout-container">
+        <button>Checkout</button>
       </div>
     </div>
   );

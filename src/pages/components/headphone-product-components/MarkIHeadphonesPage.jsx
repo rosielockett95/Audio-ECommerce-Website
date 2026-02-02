@@ -30,7 +30,7 @@ export default function MarkIHeadphonesPage() {
 
   const PRODUCT = {
     id: "xx99-mark-I-headphones",
-    name: "XX99 Mark I Headphones",
+    name: "XX99 Mark I",
     cost: 1750,
     photo: markIHeadphoneImg,
   };

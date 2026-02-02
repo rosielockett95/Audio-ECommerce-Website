@@ -25,7 +25,7 @@ import productImgThreeTablet from "../../../assets/product-yx1-earphones/tablet/
 
 const PRODUCT = {
   id: "yx1-earphones",
-  name: "YX1 Wireless Earphones",
+  name: "YX1 Earphones",
   cost: 599,
   photo: yx1EarphonesImg,
 };
