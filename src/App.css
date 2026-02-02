@@ -60,12 +60,31 @@ body {
   padding: 2rem;
   z-index: 2;
   border-radius: 10px;
+  justify-content: flex-start;
+}
+
+.total-cost-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.total-text {
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.total-cost {
+  font-weight: 800;
 }
 
 .shopping-header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .shopping-header h1 {
