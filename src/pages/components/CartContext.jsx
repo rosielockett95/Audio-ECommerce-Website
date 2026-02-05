@@ -4,14 +4,19 @@ const cartContext = createContext();
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+let slowLoadTimer;
+
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isOpen, setCartOpen] = useState(false);
+  const [openBanner, setBannerOpen] = useState(false);
 
-  // Load cart from backend on mount
   useEffect(() => {
+    let timer;
+
     async function loadCart() {
       try {
+        timer = setTimeout(() => setBannerOpen(true), 4000);
         const res = await fetch(`${API_URL}/cart`);
         const data = await res.json();
 
@@ -27,12 +32,18 @@ export function CartProvider({ children }) {
               }))
             : [],
         );
+        clearTimeout(timer);
+        setBannerOpen(false);
       } catch (err) {
         console.error("Failed to load cart:", err);
         setCartItems([]);
+        clearTimeout(timer);
+        setBannerOpen(false);
       }
     }
     loadCart();
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Add item to cart
@@ -129,6 +140,8 @@ export function CartProvider({ children }) {
         decreaseItemQuantity,
         isOpen,
         setCartOpen,
+        setBannerOpen,
+        openBanner,
       }}
     >
       {children}

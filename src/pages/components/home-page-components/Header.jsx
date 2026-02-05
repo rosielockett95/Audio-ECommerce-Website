@@ -12,7 +12,7 @@ import { useCart } from "../CartContext";
 export default function Header({}) {
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
 
-  const { isOpen, setCartOpen } = useCart();
+  const { isOpen, setCartOpen, openBanner } = useCart();
   const [open, setOpen] = useState(false);
 
   function openCart() {
@@ -21,6 +21,13 @@ export default function Header({}) {
 
   return (
     <header>
+      <div className={openBanner ? "loading" : "loading none"}>
+        <div className="spinner"></div>
+        <p className="loading-status">Connecting…</p>
+        <p className={openBanner ? "loading-note" : "loading-note none"}>
+          Initial load may take up to 30 seconds while the server starts.
+        </p>
+      </div>
       <div className={`none ${isTabletOrBelow ? "hamburger-menu" : ""}`}>
         <img onClick={() => setOpen(!open)} src={hamburgerMenu} />
       </div>

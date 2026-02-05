@@ -12,6 +12,24 @@
   display: none;
 }
 
+.loading {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  padding: 2rem;
+}
+
+.loading-status {
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.loading-note {
+  color: black;
+}
+
 .hamburger-menu {
   position: absolute;
   top: 35px;
