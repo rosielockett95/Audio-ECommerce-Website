@@ -1,5 +1,6 @@
 import { useCart } from "./CartContext";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart({ isOpen, onClose }) {
   const cartRef = useRef(null);
@@ -55,7 +56,7 @@ export default function ShoppingCart({ isOpen, onClose }) {
 
       {cartItems && cartItems.length > 0 ? (
         cartItems
-          .filter((item) => item != null) // remove nulls
+          .filter((item) => item != null)
           .map((item) => (
             <div className="shopping-cart-item-container" key={item.id}>
               <div className="shopping-cart-img">
@@ -73,7 +74,7 @@ export default function ShoppingCart({ isOpen, onClose }) {
             </div>
           ))
       ) : (
-        <p>Your cart is empty</p>
+        <p className="cart-empty-text">Your cart is empty</p>
       )}
       <div className="total-cost-container">
         <div>
@@ -82,7 +83,9 @@ export default function ShoppingCart({ isOpen, onClose }) {
         <div className="total-cost">{formattedTotal}</div>
       </div>
       <div className="checkout-container">
-        <button>Checkout</button>
+        <Link to="/checkoutpage">
+          <button>Checkout</button>
+        </Link>
       </div>
     </div>
   );

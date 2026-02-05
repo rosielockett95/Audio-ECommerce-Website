@@ -11,6 +11,7 @@ import XX59HeadphonesPage from "./pages/components/headphone-product-components/
 import ZX9SpeakerPage from "./pages/components/speaker-product-components/ZX9SpeakerPage";
 import ZX7SpeakerPage from "./pages/components/speaker-product-components/ZX7SpeakerPage";
 import YX1EarphonesPage from "./pages/components/earphone-product-components/YX1EarphonesPage";
+import CheckoutPage from "./pages/components/CheckoutPage";
 import { CartProvider } from "./pages/components/CartContext";
 import Header from "./pages/components/home-page-components/Header";
 
@@ -36,6 +37,7 @@ function App({}) {
           <Route path="/ZX9speaker" element={<ZX9SpeakerPage />} />
           <Route path="/ZX7speaker" element={<ZX7SpeakerPage />} />
           <Route path="/YX1earphones" element={<YX1EarphonesPage />} />
+          <Route path="/checkoutpage" element={<CheckoutPage />} />
         </Routes>
       </CartProvider>
     </>
