@@ -9,15 +9,25 @@ export default function CheckoutPage() {
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const { cartItems, isOpen } = useCart();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [enumber, setENumber] = useState("");
-  const [pin, setPin] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    postcode: "",
+    city: "",
+    country: "",
+    enumber: "",
+    pin: "",
+  });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
 
   const shippingCost = 50;
 
@@ -67,27 +77,33 @@ export default function CheckoutPage() {
                     <label className="label">
                       Name
                       <input
+                        name="name"
                         placeholder="Enter your name"
                         type="text"
-                        value={name}
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                     </label>
                     <label className="label">
                       Email Address
                       <input
+                        name="email"
                         placeholder="example@gmail.com"
                         type="text"
-                        value={email}
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </label>
                   </div>
                   <label className="label">
                     Phone Number
                     <input
+                      name="phone"
                       className="phone-label"
                       placeholder="+44012345"
                       type="tel"
-                      value={phone}
+                      value={formData.phone}
+                      onChange={handleChange}
                     />
                   </label>
                 </div>
@@ -98,32 +114,44 @@ export default function CheckoutPage() {
                   <label className="label">
                     Address
                     <input
+                      name="address"
                       placeholder="52 Smith Street"
                       type="text"
-                      value={address}
+                      value={formData.address}
+                      onChange={handleChange}
                     />
                   </label>
                   <div className="postcode-container">
                     <label className="label">
                       Postcode
                       <input
+                        name="postcode"
                         placeholder="DA3 8HU"
                         type="text"
-                        value={postcode}
+                        value={formData.postcode}
+                        onChange={handleChange}
                       />
                     </label>
                     <label className="label">
                       City
-                      <input placeholder="London" type="text" value={city} />
+                      <input
+                        name="city"
+                        placeholder="London"
+                        type="text"
+                        value={formData.city}
+                        onChange={handleChange}
+                      />
                     </label>
                   </div>
                   <label className="label">
                     Country
                     <input
+                      name="country"
                       className="country-label"
                       placeholder="England"
                       type="text"
-                      value={country}
+                      value={formData.country}
+                      onChange={handleChange}
                     />
                   </label>
                 </div>
@@ -140,7 +168,8 @@ export default function CheckoutPage() {
                       <input
                         placeholder="0594059405"
                         type="number"
-                        value={enumber}
+                        value={formData.enumber}
+                        onChange={handleChange}
                       />
                     </label>
                   </div>
@@ -158,7 +187,13 @@ export default function CheckoutPage() {
                     <div className="pin-container">
                       <label className="label">
                         e-Money PIN
-                        <input placeholder="1234" type="number" value={pin} />
+                        <input
+                          name="pin"
+                          placeholder="1234"
+                          type="number"
+                          value={formData.pin}
+                          onChange={handleChange}
+                        />
                       </label>
                     </div>
                   </div>
