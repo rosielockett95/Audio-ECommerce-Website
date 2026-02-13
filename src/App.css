@@ -434,6 +434,7 @@ header img:hover {
 
 .home-speaker-info-text {
   padding: 98px;
+  z-index: 2;
 }
 
 .home-speaker-info-text h1 {
@@ -473,6 +474,7 @@ header img:hover {
   position: absolute;
   left: -352px;
   top: -116px;
+  z-index: 0;
 }
 
 .zx7-speaker-info {
@@ -493,6 +495,7 @@ header img:hover {
   align-items: baseline;
   padding: 90px;
   z-index: 1;
+  gap: 1rem;
 }
 
 .zx7-speaker-text h2,
@@ -795,6 +798,29 @@ header img:hover {
 .item-price-container,
 .quantity-button {
   width: 100%;
+}
+
+.checkout-items-row {
+  position: relative;
+}
+
+.checkout-items-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 206px;
+  height: 2px;
+  background: #979797;
+  border-radius: 1px;
+}
+
+.other-items-container {
+  margin-top: 10px;
+}
+
+.other-items-container p {
+  font-size: 13px;
 }
 
 .button-container > .quantity-button {
@@ -1511,6 +1537,9 @@ header img:hover {
   .summary-cost-button {
     width: 100%;
   }
+  .checkout-items-row::after {
+    width: 196px;
+  }
 }
 
 @media (max-width: 715px) {
@@ -1564,7 +1593,7 @@ header img:hover {
   }
 
   .zx7-image-container {
-    height: 350px;
+    height: 300px;
   }
 
   .zx7-image-container img {
@@ -1591,10 +1620,6 @@ header img:hover {
 }
 
 @media (max-width: 585px) {
-  .earphone-info-container {
-    margin-top: 12rem;
-  }
-
   .hero-heading {
     font-size: 36px;
   }
@@ -1686,10 +1711,18 @@ header img:hover {
     min-width: 0;
   }
 
+  .checkout-items-row::after {
+    width: 162px;
+  }
+
   @media (max-width: 375px) {
     .shopping-cart-container {
       right: 37px;
       max-width: 320px;
+    }
+
+    .form-submitted-box {
+      top: 63%;
     }
   }
 }

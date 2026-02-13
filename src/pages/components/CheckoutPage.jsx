@@ -136,7 +136,7 @@ export default function CheckoutPage() {
                   )}
                 </div>
                 <div>
-                  <div>
+                  <div className="other-items-container">
                     {cartItems.length > 1 && (
                       <p>
                         and {totalCheckoutItems} other item
