@@ -84,14 +84,16 @@ export default function XX59HeadphonesPage() {
           cost={cost}
         >
           <div className="cart-button-container">
-            <button className="quantity-button">
-              <button onClick={quantity > 0 ? decreaseQuantity : null}>
-                -
-              </button>
+            <div className="button-container">
+              <button className="quantity-button">
+                <button onClick={quantity > 0 ? decreaseQuantity : null}>
+                  -
+                </button>
 
-              <p>{quantity}</p>
-              <button onClick={increaseQuantity}>+</button>
-            </button>
+                <p>{quantity}</p>
+                <button onClick={increaseQuantity}>+</button>
+              </button>
+            </div>
             <button
               onClick={() => {
                 if (quantity > 0) {

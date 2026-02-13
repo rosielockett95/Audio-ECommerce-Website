@@ -1,13 +1,51 @@
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useCart } from "./CartContext";
+import { Link } from "react-router-dom";
 import Footer from "./home-page-components/Footer";
+import checkoutIcon from "../../assets/checkout/icon-order-confirmation.svg";
 
 export default function CheckoutPage() {
+  const checkoutRef = useRef(null);
   const navigate = useNavigate();
   const isTabletOrBelow = useMediaQuery({ maxWidth: 1205 });
   const { cartItems, isOpen } = useCart();
+  const [submitForm, onSubmit] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(true);
+  }
+
+  function onClose() {
+    onSubmit((prev) => !prev);
+  }
+
+  (useEffect(() => {
+    function handleClickOutside(e) {
+      if (checkoutRef.current && !checkoutRef.current.contains(e.target)) {
+        onClose();
+      }
+    }
+
+    if (submitForm) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }),
+    [submitForm, onClose]);
+
+  const firstItem = cartItems[0];
+
+  // console.log(
+  //   firstItem.name,
+  //   firstItem.quantity,
+  //   firstItem.cost * firstItem.quantity,
+  // );
 
   const [formData, setFormData] = useState({
     name: "",
@@ -42,6 +80,8 @@ export default function CheckoutPage() {
 
   const grandTotal = vatPrice + shippingCost;
 
+  const totalCheckoutItems = cartItems.length - 1;
+
   function handleGoBack() {
     if (window.history.length > 1) {
       navigate(-1);
@@ -56,10 +96,85 @@ export default function CheckoutPage() {
       currency: "GBP",
     });
 
+  //
+
   return (
     <>
       <div
-        className={`${isOpen ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
+        ref={checkoutRef}
+        className={submitForm ? "form-submitted-box active" : "none"}
+      >
+        <div>
+          <img src={checkoutIcon} />
+        </div>
+        {cartItems.length > 0 ? (
+          <>
+            <div>
+              <h1>Thank you for your order</h1>
+            </div>
+            <div>
+              <p className="email-confirmation-text">
+                You will receive an email confirmation shortly
+              </p>
+            </div>
+            <div className="main-checkout-container">
+              <div className="checkout-items-container">
+                <div className="checkout-items-row">
+                  {cartItems.length > 0 && (
+                    <>
+                      <div>
+                        <img className="form-photo" src={cartItems[0].photo} />
+                      </div>
+                      <div className="cart-items-quantity-cost">
+                        <div>{cartItems[0].name}</div>
+                        <div>
+                          {formatGBP(cartItems[0].cost * cartItems[0].quantity)}
+                        </div>
+                      </div>
+                      <div>x{cartItems[0].quantity}</div>
+                    </>
+                  )}
+                </div>
+                <div>
+                  <div>
+                    {cartItems.length > 1 && (
+                      <p>
+                        and {totalCheckoutItems} other item
+                        {totalCheckoutItems > 1 ? "s" : ""}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="checkout-total-container">
+                <div className="checkout-total-container-inner">
+                  <div>
+                    <p className="checkout-total-text">Grand Total</p>
+                  </div>
+                  <div>
+                    <p className="checkout-total-white">
+                      {formatGBP(grandTotal)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1>Your cart is empty</h1>
+          </>
+        )}
+
+        <div>
+          <Link to="/">
+            <button>Back to Home</button>
+          </Link>
+        </div>
+      </div>
+      <div
+        className={`${isOpen || submitForm ? "main-content-wrapper-product opacity" : "main-content-wrapper-product"}  ${isTabletOrBelow ? "main-content-wrapper-tablet" : ""}`}
       >
         <div>
           <button onClick={() => handleGoBack()} className="return-link">
@@ -69,7 +184,8 @@ export default function CheckoutPage() {
         <div className="page-container">
           <div className="form-container">
             <h1>Checkout</h1>
-            <form>
+
+            <form onSubmit={handleSubmit} id="my-form">
               <div className="billing-container">
                 <h3>Billing Details</h3>
                 <div>
@@ -208,34 +324,37 @@ export default function CheckoutPage() {
               <div className="checkout-items" key={item.id}>
                 <div className="shopping-cart-img">
                   <img src={item.photo || ""} alt={item.name || ""} />
+                  <div className="checkout-items-cost">
+                    <p className="item-name">{item.name || ""}</p>
+                    <p className="item-cost">£{item.cost * item.quantity}</p>
+                  </div>
                 </div>
-                <div className="checkout-items-cost">
-                  <p className="item-name">{item.name || ""}</p>
-                  <p className="item-cost">£{item.cost * item.quantity}</p>
-                </div>
+
                 <p>x{item.quantity}</p>
               </div>
             ))}
-            <div>
+            <div className="summary-cost-outer">
               <div className="summary-cost-container">
                 <p className="summary-text">Total</p>
-                <p>{formatGBP(totalCost)}</p>
+                <p className="summary-cost">{formatGBP(totalCost)}</p>
               </div>
               <div className="summary-cost-container">
                 <p className="summary-text">Shipping</p>
-                <p>£{shippingCost}</p>
+                <p className="summary-cost">£{shippingCost}</p>
               </div>
               <div className="summary-cost-container">
                 <p className="summary-text">VAT (included) </p>
-                <p>{formatGBP(vatPrice2)}</p>
+                <p className="summary-cost">{formatGBP(vatPrice2)}</p>
               </div>
-              <div className="summary-cost-container">
+              <div className="summary-cost-container-total">
                 <p className="summary-text">Grand Total</p>
-                <p>{formatGBP(grandTotal)}</p>
+                <p className="summary-cost-total">{formatGBP(grandTotal)}</p>
               </div>
             </div>
-            <div>
-              <button className="summary-button">Continue and Pay</button>
+            <div className="summary-cost-button">
+              <button type="submit" form="my-form" className="summary-button">
+                Continue and Pay
+              </button>
             </div>
           </div>
         </div>

@@ -37,12 +37,6 @@ export default function ShoppingCart({ isOpen, onClose }) {
     currency: "GBP",
   });
 
-  // Loops through each instance of that item in the array and adds the first argument onto it
-  // const totalItems = cartItems.reduce(
-  //   (name, item) => name + item.name,
-  //   "Rosie",
-  // );
-
   return (
     <div ref={cartRef} className={isOpen ? "shopping-cart-container" : "none"}>
       <div className="shopping-header">
